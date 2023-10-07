@@ -34,11 +34,13 @@ async function randomId() {
 }
 
 app.get("/test", (req, res) => {
+  console.log("test reached")
   res.send("<h1>It's working 🤗</h1>")
 })
 
 app.get("/", async (req, res) => {
   try {
+    console.log("/ reached")
     const id = await randomId()
     const character = await getCharacter(id)
     res.send(character)
