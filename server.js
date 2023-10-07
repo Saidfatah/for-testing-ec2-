@@ -58,4 +58,4 @@ app.get("/:id", async (req, res) => {
 })
 
 const port = process.env.PORT || 8080
-app.listen(port, () => console.log(`Listening on port ${port}`))
+app.listen(port, '172.31.43.97')
