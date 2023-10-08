@@ -19,10 +19,15 @@ function getRandomInt(max) {
 }
 
 async function getCharacter(id) {
-  const [characters] = await pool.promise().query("SELECT * FROM characters WHERE id = ?", [
+  try{
+   const [characters] = await pool.promise().query("SELECT * FROM characters WHERE id = ?", [
     id,
-  ])
-  return characters[0]
+  ],)
+  return characters[0] 
+  }catch(err){
+    console.log(err)
+    return undifined;
+  }
 }
 async function randomId() {
   const [rows] = await pool.promise().query(
@@ -45,6 +50,7 @@ app.get("/", async (req, res) => {
     const character = await getCharacter(id)
     res.send(character)
   } catch (error) {
+    console.log(error)
     res.send(error)
   }
 })
