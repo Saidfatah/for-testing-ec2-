@@ -23,6 +23,8 @@ async function getCharacter(id) {
    const [characters] = await pool.promise().query("SELECT * FROM characters WHERE id = ?", [
     id,
   ],)
+    console.log("characters")
+    console.log(characters)
   return characters[0] 
   }catch(err){
     console.log(err)
@@ -35,6 +37,7 @@ async function randomId() {
   )
   const { totalCharacters } = rows[0]
   const randomId = getRandomInt(totalCharacters)
+  console.log({totalCharacters})
   return randomId
 }
 
@@ -46,6 +49,7 @@ app.get("/test", (req, res) => {
 app.get("/", async (req, res) => {
   try {
     console.log("/ reached")
+    console.log(pool·)
     const id = await randomId()
     const character = await getCharacter(id)
     res.send(character)
