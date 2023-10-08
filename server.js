@@ -20,9 +20,7 @@ function getRandomInt(max) {
 
 async function getCharacter(id) {
   try{
-   const [characters] = await pool.promise().query("SELECT * FROM characters WHERE id = ?", [
-    id,
-  ],)
+   const [characters] = await pool.promise().query("SELECT * FROM characters")
     console.log("characters")
     console.log(characters)
   return characters[0] 
