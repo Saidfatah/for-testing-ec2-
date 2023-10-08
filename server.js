@@ -49,7 +49,7 @@ app.get("/test", (req, res) => {
 app.get("/", async (req, res) => {
   try {
     console.log("/ reached")
-    console.log(pool·)
+    console.log(pool)
     const id = await randomId()
     const character = await getCharacter(id)
     res.send(character)
